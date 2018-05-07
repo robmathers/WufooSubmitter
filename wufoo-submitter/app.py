@@ -28,7 +28,7 @@ def submit(form_id):
                              headers={'content-type': 'application/x-www-form-urlencoded'},
                              auth=(api_key,''))
 
-    return Response(body=response.content,
+    return Response(body=response.text,
                     status_code=response.status_code,
                     headers={'x-wufoo-submitter': 'yes'})
 
