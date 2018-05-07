@@ -15,3 +15,8 @@ def submit(form_id):
     if not subdomain:
         raise BadRequestError('Wufoo subdomain has not been configured.')
 
+    api_key = getenv('WUFOO_API_KEY')
+
+    if not api_key:
+        raise BadRequestError('Wufoo API key has not been configured.')
+
