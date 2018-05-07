@@ -1,10 +1,8 @@
 # Wufoo Submitter
 
-## A simple AWS Lambda function to submit Wufoo form entries through the API without exposing your API key.
-
 This is built to allow use of [Wufoo's API][api-docs] to submit form entries without exposing your API key in a client side app.
 
-By using the API you can build forms that submit via Javascript without any Wufoo branding, for a seamless user experience, while still taking advantage of Wufoo's form building, and entry tracking and notification tools.
+By using the Wufoo API, you can build forms that submit via Javascript without any Wufoo branding, for a seamless user experience, while still taking advantage of Wufoo's form building, and entry tracking and notification tools.
 
 ## Installation
 This uses [AWS Chalice](https://github.com/aws/chalice) for a lightweight Lambda SDK.
