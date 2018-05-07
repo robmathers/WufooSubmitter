@@ -1,5 +1,6 @@
 from os import getenv
 from chalice import Chalice, BadRequestError, Response
+import requests
 
 app = Chalice(app_name='wufoo-submitter')
 
@@ -19,4 +20,19 @@ def submit(form_id):
 
     if not api_key:
         raise BadRequestError('Wufoo API key has not been configured.')
+
+    url = url.format(subdomain=subdomain, form_id=form_id)
+
+    response = requests.post(url,
+                             data=app.current_request.raw_body,
+                             headers={'content-type': 'application/x-www-form-urlencoded'},
+                             auth=(api_key,''))
+
+    print(response.status_code)
+    print(response.headers)
+    print(response.content)
+
+    return Response(body=response.content,
+                    status_code=response.status_code,
+                    headers={'x-wufoo-submitter': 'yes'})
 
